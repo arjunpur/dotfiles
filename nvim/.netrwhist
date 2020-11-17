@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/etc/init.d'
+let g:netrw_dirhist_8='/home/arjun/Projects/rusty-visuals/rusty-visuals/src'
+let g:netrw_dirhist_7='/home/arjun/Projects/rusty-visuals/rusty-visuals'
+let g:netrw_dirhist_6='/home/arjun/Projects/rusty-visuals'
+let g:netrw_dirhist_5='/home/arjun/Projects/rusty-visuals/rusty-visuals/src'
+let g:netrw_dirhist_4='/home/arjun/Projects/rusty-visuals/rusty-visuals'
+let g:netrw_dirhist_3='/home/arjun/Projects/rusty-visuals'
+let g:netrw_dirhist_2='/home/arjun/Projects/rusty-visuals/rusty-visuals'
+let g:netrw_dirhist_1='/home/arjun/Projects/rusty-visuals'
