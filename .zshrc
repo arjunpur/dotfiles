@@ -3,6 +3,7 @@
 #   - zsh: My shell.
 #   - fzf: A fuzzy finder. Config stored at ~/.fzf.zsh, while repo stored at ~/.fzf
 #   - nvim: My editor. Config stored at ~/.config/nvim/init.vim
+#   - tmux: Terminal multiplexer. Config stored at ~/.config/.tmux.conf
 
 setopt histignorealldups sharehistory
 
@@ -33,7 +34,13 @@ antigen apply
 
 # zsh-autosuggestions: accept suggestion key binding
 # https://github.com/zsh-users/zsh-autosuggestions
-bindkey '^ ' autosuggest-accept
+bindkey '^f' autosuggest-accept
+
+# Delete previous words with ctrl-b
+bindkey '^b' vi-backward-kill-word
 
 # Source fzf configuration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Aliases
+alias ls='ls --color=auto'
