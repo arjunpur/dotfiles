@@ -1,11 +1,10 @@
 let mapleader=","
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 " For Git based fzf
 set rtp+=~/.fzf
 
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug '~/.fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -13,6 +12,8 @@ Plug 'preservim/nerdtree'
 Plug 'rakr/vim-one'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-commentary'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 """" Cosmetics
@@ -75,6 +76,9 @@ nmap <leader>m :noh<cr>
 " Be smart when using tabs ;)
 set smarttab
 
+" Enable mouse scroll https://superuser.com/questions/610114/tmux-enable-mouse-scrolling-in-vim-instead-of-history-buffer
+set mouse=a
+
 " 1 tab == 4 spaces
 " set shiftwidth=4
 " set tabstop=4
@@ -103,7 +107,18 @@ let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
 map <leader>o :BufExplorer<cr>
 
-"""""""
-" Set up per language Coc configuration
-" This is next because it sets language specific variables.
-runtime! include/lang.vim
+"" Telescope search
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+"" Reload neovim configuration
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+
+lua << EOF
+require("inittmp")
+EOF
+
+

@@ -147,7 +147,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -436,21 +436,21 @@ shell:
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a
-    # URL. The URL is always added to the command as the last parameter.
-    #
-    # When set to `launcher: None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
+  url:
+     # URL launcher
+    
+     # This program is executed when clicking on a text which is recognized as a
+     # URL. The URL is always added to the command as the last parameter.
+    
+     # When set to `launcher: None`, URL launching will be disabled completely.
+    
+     # Default:
+     #   - (macOS) open
+     #   - (Linux/BSD) xdg-open
+     #   - (Windows) explorer
+    launcher:
+      program: xdg-open
+      args: []
 
     # URL modifiers
     #
@@ -675,7 +675,7 @@ shell:
 key_bindings:
   - { key: D,     mods: Control,       chars: "\x01\x7c" } # ctrl-a |
   - { key: D,     mods: Control|Shift, chars: "\x01\x2d" } # ctrl-a _
-  - { key: W,     mods: Control,       chars: "\x01\x78" }
+  - { key: W,     mods: Alt,           chars: "\x01\x78" }
   - { key: H,     mods: Control,       chars: "\x01\x68" } # ctrl-a h
   - { key: J,     mods: Control,       chars: "\x01\x6a" } # ctrl-a j
   - { key: K,     mods: Control,       chars: "\x01\x6b" } # ctrl-a k
@@ -706,7 +706,6 @@ key_bindings:
   #- { key: Escape,                      mode: Vi, action: ClearSelection          }
   #- { key: I,                           mode: Vi, action: ScrollToBottom          }
   #- { key: I,                           mode: Vi, action: ToggleViMode            }
-  #- { key: C,      mods: Control,       mode: Vi, action: ToggleViMode            }
   #- { key: Y,      mods: Control,       mode: Vi, action: ScrollLineUp            }
   #- { key: E,      mods: Control,       mode: Vi, action: ScrollLineDown          }
   #- { key: G,                           mode: Vi, action: ScrollToTop             }
@@ -770,9 +769,9 @@ key_bindings:
   #- { key: K,              mods: Command, mode: ~Vi, chars: "\x0c"            }
   #- { key: Key0,           mods: Command,            action: ResetFontSize    }
   #- { key: Equals,         mods: Command,            action: IncreaseFontSize }
-  #- { key: Plus,           mods: Command,            action: IncreaseFontSize }
+  - { key: Plus,           mods: Command,            action: IncreaseFontSize }
   #- { key: NumpadAdd,      mods: Command,            action: IncreaseFontSize }
-  #- { key: Minus,          mods: Command,            action: DecreaseFontSize }
+  - { key: Minus,          mods: Command,            action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Command,            action: DecreaseFontSize }
   #- { key: K,              mods: Command,            action: ClearHistory     }
   #- { key: V,              mods: Command,            action: Paste            }
@@ -780,30 +779,30 @@ key_bindings:
   #- { key: C,              mods: Command, mode: Vi,  action: ClearSelection   }
   #- { key: H,              mods: Command,            action: Hide             }
   #- { key: M,              mods: Command,            action: Minimize         }
-  - { key: Q,              mods: Control,            action: Quit             }
+  # - { key: Q,              mods: Control,            action: Quit             }
   #- { key: W,              mods: Command,            action: Quit             }
   - { key: N,              mods: Control,            action: SpawnNewInstance }
-  #- { key: F,              mods: Command|Control,    action: ToggleFullscreen }
+  - { key: Return,         mods: Control,    action: ToggleFullscreen }
   #- { key: F,              mods: Command,            action: SearchForward    }
   #- { key: B,              mods: Command,            action: SearchBackward   }
 
-#debug:
-  # Display the time it takes to redraw each frame.
-  #render_timer: false
+debug:
+   # Display the time it takes to redraw each frame.
+  render_timer: false
 
-  # Keep the log file after quitting Alacritty.
-  #persistent_logging: false
+   # Keep the log file after quitting Alacritty.
+  persistent_logging: false
 
-  # Log level
-  #
-  # Values for `log_level`:
-  #   - None
-  #   - Error
-  #   - Warn
-  #   - Info
-  #   - Debug
-  #   - Trace
-  #log_level: Warn
+   # Log level
+  
+   # Values for `log_level`:
+   #   - None
+   #   - Error
+   #   - Warn
+   #   - Info
+   #   - Debug
+   #   - Trace
+  log_level: Trace 
 
-  # Print all received window events.
-  #print_events: false
+   # Print all received window events.
+  print_events: true 

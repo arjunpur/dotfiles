@@ -27,7 +27,7 @@ eval "$(starship init zsh)"
 bindkey -v
 
 # Using antigen for zsh plugin management https://github.com/zsh-users/antigen
-source ~/.config/zsh/antigen.zsh
+source /home/arjun/.config/zsh/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
@@ -40,7 +40,23 @@ bindkey '^f' autosuggest-accept
 bindkey '^b' vi-backward-kill-word
 
 # Source fzf configuration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 # Aliases
 alias ls='ls --color=auto'
+alias vim='nvim'
+
+# Set up pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Plaid
+export PLAID_CLIENT_ID=
+export PLAID_SECRET=
+export PLAID_ENV=development
+export PLAID_COUNTRY_CODES=US
