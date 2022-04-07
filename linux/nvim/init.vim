@@ -117,6 +117,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
+"" Completion
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c
+
 lua << EOF
 require("inittmp")
 EOF

@@ -55,8 +55,4 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-# Plaid
-export PLAID_CLIENT_ID=
-export PLAID_SECRET=
-export PLAID_ENV=development
-export PLAID_COUNTRY_CODES=US
+alias luamake=/home/arjun/Projects/tools/lua-language-server/3rd/luamake/luamake
