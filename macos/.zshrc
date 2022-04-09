@@ -25,7 +25,7 @@ alias ls='ls -G'
 
 ## Plugins
 # Using antigen for zsh plugin management https://github.com/zsh-users/antigen
-source ~/.config/zsh/antigen.zsh
+source ~/.config/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
@@ -40,6 +40,9 @@ zstyle ':completion:*' fzf-search-display true
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 bindkey '^ ' autosuggest-accept
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Delete previous words with ctrl-b
+bindkey '^b' vi-backward-kill-word
 
 # Cache completion if nothing changed - faster startup time
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -115,3 +118,4 @@ ec2ip () {
         local instance_id="${1}" 
         printf "%s" "$(aws ec2 describe-instances --instance-ids "${instance_id}" | jq -r '.Reservations[].Instances[].PrivateIpAddress')"
 }
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
