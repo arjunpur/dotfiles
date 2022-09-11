@@ -33,13 +33,16 @@ if (has("termguicolors"))
 set termguicolors
 endif
 
+
+" See plotterdays README.md for why I had to do this (i.e make sure vsketch sketch redraws work)
+set backupcopy=yes
+
 set background=dark " for the dark version
 " set background=light " for the light version
 colorscheme one
 
 " Add a bit extra margin to the left
 set foldcolumn=1
-
 
 """ Utilities
 "" Splits
