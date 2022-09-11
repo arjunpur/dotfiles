@@ -48,7 +48,6 @@ alias ls='ls --color=auto'
 alias vim='nvim'
 
 # Set up pyenv
-export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv init --path)"

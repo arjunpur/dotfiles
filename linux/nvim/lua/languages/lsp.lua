@@ -18,7 +18,7 @@ function M.on_attach(client, bufnr)
 		api.nvim_buf_set_keymap(bufnr, mode, mapping, command, opts)
 	end
   -- Enable completion triggered by <c-x><c-o>
-  api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
@@ -37,6 +37,29 @@ function M.on_attach(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+
+  -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
+
+  -- Enable floating window diagnostics
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      local cursor_opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = 'rounded',
+        source = 'always',
+        prefix = ' ',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, cursor_opts)
+    end
+  })
+
+  vim.o.updatetime = 100
 
 end
 

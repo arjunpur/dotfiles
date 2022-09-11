@@ -14,3 +14,7 @@ lsp.sumneko_lua.setup(require("languages.lua").lsp)
 -- enhancer but takes additional options
 -- https://sharksforarms.dev/posts/neovim-rust/
 require('rust-tools').setup(require("languages.rust").opts)
+
+lsp.efm.setup(require("languages.efm").lsp)
+
+

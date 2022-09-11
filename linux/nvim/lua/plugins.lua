@@ -16,11 +16,13 @@ require("packer").startup(function()
 		"hrsh7th/nvim-cmp",
 		requires = { { "onsails/lspkind-nvim" } },
 	})
+  -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources#lsp
   use("hrsh7th/cmp-buffer")
   use("hrsh7th/cmp-path")
   use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-nvim-lsp-signature-help")
   use("L3MON4D3/LuaSnip")
   use("saadparwaiz1/cmp_luasnip")
-  use("simrat39/rust-tools.nvim")  
+  use("simrat39/rust-tools.nvim")
 end)
