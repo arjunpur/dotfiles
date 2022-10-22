@@ -16,6 +16,7 @@ require("packer").startup(function()
 		"hrsh7th/nvim-cmp",
 		requires = { { "onsails/lspkind-nvim" } },
 	})
+  use('tpope/vim-fugitive')
   -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources#lsp
   use("hrsh7th/cmp-buffer")
   use("hrsh7th/cmp-path")
@@ -29,7 +30,7 @@ require("packer").startup(function()
   use('folke/tokyonight.nvim')
   use('kyazdani42/nvim-web-devicons')
   use('gbrlsnchs/telescope-lsp-handlers.nvim')
-  use('github/copilot.nvim')
+  -- use('github/copilot.nvim')
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
@@ -49,6 +50,9 @@ require("packer").startup(function()
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-
-
+  use {
+    'ruifm/gitlinker.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+  }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 end)

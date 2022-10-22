@@ -9,7 +9,8 @@ require("plugins.lspconfig")
 require("plugins.telescope")
 require("plugins.colorscheme")
 require("plugins.nvim-tree")
-require("nvim-tree").setup()
+require("plugins.gitlinker")
+require("plugins.nvim-tree")
 
 
 
