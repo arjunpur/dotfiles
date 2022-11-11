@@ -1,5 +1,3 @@
-local api = vim.api
-
 local M = {}
 
 -- Use an on_attach function to only map the following keys
@@ -12,31 +10,25 @@ function M.on_attach(client, bufnr)
 		vim.cmd([[augroup END]])
 	end
 
-	local opts = { noremap = true, silent = true }
-
-	local function buf_set_keymap(mode, mapping, command)
-		api.nvim_buf_set_keymap(bufnr, mode, mapping, command, opts)
-	end
   -- Enable completion triggered by <c-x><c-o>
   -- api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
-  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
-  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-  buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local opts = { noremap=true, silent=true }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '[d', vim.lsp.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.lsp.diagnostic.goto_next, opts)
+  vim.keymap.set('n', '<leader>q', vim.lsp.diagnostic.set_loclist, bufopts)
+  vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
 
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
   vim.diagnostic.config({
@@ -65,7 +57,7 @@ end
 
 -- Set up cmp with LSP
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 M.capabilities = capabilities
 
 return M
