@@ -11,7 +11,6 @@ require("plugins.colorscheme")
 require("plugins.nvim-tree")
 require("plugins.gitlinker")
 require("plugins.nvim-tree")
-
-
+-- require("plugins.copilot")
 
 -- empty setup using defaults

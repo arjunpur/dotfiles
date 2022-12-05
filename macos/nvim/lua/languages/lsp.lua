@@ -3,7 +3,7 @@ local M = {}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function M.on_attach(client, bufnr)
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.documentFormattingProvider then
 		vim.cmd([[augroup lsp_formatting]])
 		vim.cmd([[autocmd!]])
 		vim.cmd([[autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync()]])
@@ -25,9 +25,9 @@ function M.on_attach(client, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '[d', vim.lsp.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']d', vim.lsp.diagnostic.goto_next, opts)
-  vim.keymap.set('n', '<leader>q', vim.lsp.diagnostic.set_loclist, bufopts)
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, bufopts)
   vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
 
   -- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
