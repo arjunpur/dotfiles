@@ -8,6 +8,9 @@ local lsp = require('languages.lsp')
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+table.insert(runtime_path, "/opt/homebrew/share/lua/5.4/?.lua")
+table.insert(runtime_path, "/opt/homebrew/share/lua/5.4/?/init.lua")
+
 
 local M = {}
 
@@ -19,7 +22,7 @@ M.lsp = {
     Lua = {
       runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-          version = 'LuaJIT',
+          version = 'Lua 5.4',
           -- Setup your lua path
           path = runtime_path,
       },
@@ -29,7 +32,10 @@ M.lsp = {
       },
       workspace = {
           -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = {
+            vim.api.nvim_get_runtime_file("", true),
+            "/opt/homebrew/share/lua/5.4/",
+          }
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {

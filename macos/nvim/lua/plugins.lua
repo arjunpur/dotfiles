@@ -30,22 +30,7 @@ require("packer").startup(function()
   use('folke/tokyonight.nvim')
   use('kyazdani42/nvim-web-devicons')
   use('gbrlsnchs/telescope-lsp-handlers.nvim')
-  use {
-    "zbirenbaum/copilot.lua",
-    event = "VimEnter",
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup()
-      end, 100)
-    end,
-  }
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  }
+  use('github/copilot.vim')
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,

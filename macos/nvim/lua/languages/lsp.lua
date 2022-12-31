@@ -6,7 +6,7 @@ function M.on_attach(client, bufnr)
 	if client.server_capabilities.documentFormattingProvider then
 		vim.cmd([[augroup lsp_formatting]])
 		vim.cmd([[autocmd!]])
-		vim.cmd([[autocmd BufWritePre <buffer> :lua vim.lsp.buf.formatting_sync()]])
+		vim.cmd([[autocmd BufWritePre <buffer> :lua vim.lsp.buf.format()]])
 		vim.cmd([[augroup END]])
 	end
 
